@@ -1,13 +1,18 @@
 name: اجرای سایت
+
 on:
   workflow_dispatch
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
+
       - name: تغییر فایل index.html
-  run: echo "<!-- تغییر خودکار انجام شد -->" >> index.html
+        run: echo "<!-- تغییر خودکار انجام شد -->" >> index.html
+
       - uses: EndBug/add-and-commit@v9
         with:
           message: "ذخیره تغییرات"
