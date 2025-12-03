@@ -7,9 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: تغییر فایل index.html
-        run: echo "" > index.html
+        run: echo "سلام آبولفضل" > index.html
       - uses: EndBug/add-and-commit@v9
         with:
-          message: "ذخیره تغییرات"
+          message: "ذخیره تغییرات تستی"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
