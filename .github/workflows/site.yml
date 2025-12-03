@@ -1,1 +1,14 @@
-
+name: اجرای سایت
+on:
+  workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "تغییری انجام شد"
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: "ذخیره تغییرات"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
