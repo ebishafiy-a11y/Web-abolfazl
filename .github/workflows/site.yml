@@ -1,16 +1,15 @@
-name:اجرای سایت
+name: اجرای سایت
 on:
-workflow_dispatch
+  workflow_dispatch
 jobs:
-build:
-runs-on:ubuntu-latest
-steps:
--uses:actions/checkout@v3
--name:index.htmlتغییر فایل
-run:echo""»index.html
-uses:EndBug/add-and-commit@v9
-with:
-message:"ذخیره تغییرات"
-env:
-GITHUB_TOKEN:$
-{{secrets.GH_TOKEN}}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: تغییر فایل index.html
+        run: echo "" > index.html
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: "ذخیره تغییرات"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
