@@ -1100,5 +1100,30 @@ box-shadow:0 20px 80px rgba(0,0,0,0.9);min-width:500px;max-width:700px;animation
             currentContainer = null;
         }
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a7ff8c281302d95',t:'MTc2NDczMjQ4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<button class="edt-btn" id="edtBtn">✎</button>
+
+<div class="edt-modal" id="edtModal">
+  <div class="edt-box">
+    <div class="edt-header">
+      <h3 class="edt-title">ویرایش محتوا</h3>
+      <button class="edt-close" id="edtClose">x</button>
+    </div>
+    <div class="edt-field" id="edtTextField" style="display:none">
+      <label class="edt-label" for="edtTextInput">متن</label>
+      <textarea id="edtTextInput" class="edt-textarea"></textarea>
+    </div>
+    <div class="edt-field" id="edtImageField" style="display:none">
+      <label class="edt-label" for="edtImageInput">لینک تصویر</label>
+      <input type="text" id="edtImageInput" class="edt-input" placeholder="https://example.com/image.jpg"/>
+    </div>
+    <div class="edt-actions">
+      <button class="edt-save" id="edtSave">ذخیره</button>
+      <button class="edt-cancel" id="edtCancel">انصراف</button>
+    </div>
+  </div>
+</div>
+
+<div class="edt-notif" id="edtNotif"></div>
+<div class="edt-loading" id="edtLoading"><div class="edt-spinner"></div></div>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a7ff8c281302d95',t:'MTc2NDczMjQ4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
