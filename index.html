@@ -6,7 +6,28 @@
   <title>فروشگاه مد و پوشاک</title>
   <script src="/_sdk/element_sdk.js"></script>
   <style>
-        body {
+      <style>
+/* دکمه شناور ویرایشگر */
+.edt-btn {position:fixed;bottom:30px;right:30px;width:70px;height:70px;
+background:linear-gradient(135deg,#ff4757,#ff6348);color:#fff;border:none;
+border-radius:50%;font-size:32px;cursor:pointer;box-shadow:0 8px 30px rgba(255,71,87,0.6);
+z-index:999999;transition:all 0.3s ease;}
+.edt-btn:hover {transform:scale(1.15) rotate(15deg);}
+.edt-btn.active {background:linear-gradient(135deg,#00d2ff,#3a7bd5);animation:pulse 2s infinite;}
+@keyframes pulse {0%,100%{box-shadow:0 8px 30px rgba(0,210,255,0.6);}50%{box-shadow:0 8px 50px rgba(0,210,255,1);}}
+
+/* مودال ویرایشگر */
+.edt-modal {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);
+display:none;align-items:center;justify-content:center;z-index:9999999;}
+.edt-modal.show {display:flex;}
+.edt-box {background:linear-gradient(135deg,#2c3e50,#34495e);padding:40px;border-radius:20px;
+box-shadow:0 20px 80px rgba(0,0,0,0.9);min-width:500px;max-width:700px;animation:appear 0.3s ease;}
+@keyframes appear {from{transform:scale(0.8);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+/* بقیه استایل‌ها برای فیلدها، دکمه‌ها، نوتیفیکیشن و لودینگ */
+...
+</style>
+   body {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
