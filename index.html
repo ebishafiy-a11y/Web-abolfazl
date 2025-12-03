@@ -1125,5 +1125,118 @@ box-shadow:0 20px 80px rgba(0,0,0,0.9);min-width:500px;max-width:700px;animation
 
 <div class="edt-notif" id="edtNotif"></div>
 <div class="edt-loading" id="edtLoading"><div class="edt-spinner"></div></div>
+  <script>
+const CONFIG = {
+  token: 'ghp_YOUR_TOKEN_HERE',
+  repo: 'Web-abolfazl',
+  user: 'ebishafiy-a11y',
+  file: 'index.html'
+};
+
+let currentType = '';
+let originalHTML = '';
+let currentElement = null;
+let editMode = false;
+
+const modal = document.getElementById('edtModal');
+const btn = document.getElementById('edtBtn');
+const textField = document.getElementById('edtTextField');
+const imageField = document.getElementById('edtImageField');
+const imageInput = document.getElementById('edtImageInput');
+const textInput = document.getElementById('edtTextInput');
+
+document.getElementById('edtSave').addEventListener('click', saveChanges);
+document.getElementById('edtCancel').addEventListener('click', closeModal);
+document.getElementById('edtClose').addEventListener('click', closeModal);
+btn.addEventListener('click', toggleEditMode);
+
+function toggleEditMode() {
+  editMode = !editMode;
+  if (editMode) {
+    btn.classList.add('active');
+    document.body.classList.add('edt-mode');
+    activateEditableElements();
+    showNotification('📝 حالت ویرایش فعال شد! روی متن یا عکس کلیک کن');
+  } else {
+    btn.classList.remove('active');
+    document.body.classList.remove('edt-mode');
+    showNotification('❌ حالت ویرایش غیرفعال شد');
+  }
+}
+
+function activateEditableElements() {
+  const textElements = document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,a,button,div,li,section,article,header,footer,aside,nav');
+  textElements.forEach(el => {
+    if (!isEditorElement(el) && el.textContent.trim()) {
+      el.classList.add('edt-item');
+      el.addEventListener('click', function(e) {
+        if (!editMode) return;
+        e.preventDefault();
+        e.stopPropagation();
+        currentElement = el;
+        currentType = 'text';
+        openTextEditor();
+      });
+    }
+  });
+
+  const imageElements = document.querySelectorAll('img,[style*="background-image"]');
+  imageElements.forEach(el => {
+    if (!isEditorElement(el)) {
+      el.classList.add('edt-item');
+      el.addEventListener('click', function(e) {
+        if (!editMode) return;
+        e.preventDefault();
+        e.stopPropagation();
+        currentElement = el;
+        currentType = 'image';
+        openImageEditor();
+      });
+    }
+  });
+}
+
+function isEditorElement(el) {
+  return el.id?.startsWith('edt') || el.closest('#edtModal') || el.closest('#edtNotif') || el.closest('#edtLoading') || el.classList.contains('edt-btn');
+}
+
+function openTextEditor() {
+  textField.style.display = 'block';
+  imageField.style.display = 'none';
+  textInput.value = currentElement.textContent.trim();
+  originalHTML = currentElement.textContent.trim();
+  modal.classList.add('show');
+}
+
+function openImageEditor() {
+  textField.style.display = 'none';
+  imageField.style.display = 'block';
+  let imageUrl = '';
+  if (currentElement.tagName === 'IMG') {
+    imageUrl = currentElement.src;
+    originalHTML = currentElement.src;
+  } else {
+    const bgImage = currentElement.style.backgroundImage;
+    if (bgImage) {
+      imageUrl = bgImage.replace(/url\\(["']?/, '').replace(/["']?\\)/, '');
+      originalHTML = imageUrl;
+    }
+  }
+  imageInput.value = imageUrl;
+  modal.classList.add('show');
+}
+
+function closeModal() {
+  modal.classList.remove('show');
+  currentElement = null;
+  currentType = '';
+  originalHTML = '';
+}
+
+async function saveChanges() {
+  if (!currentElement) return;
+  if (CONFIG.token === 'ghp_YOUR_TOKEN_HERE') {
+    showNotification('❗ لطفاً توکن GitHub را وارد کنید!', true);
+    return
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a7ff8c281302d95',t:'MTc2NDczMjQ4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
